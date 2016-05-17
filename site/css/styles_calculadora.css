@@ -1,0 +1,112 @@
+.calculadora {
+    font-family: 'Oxygen', sans-serif;
+	margin-top: 20px;
+	width: 80%;
+	max-width: 800px;
+	min-width: 290px;
+    padding-right: 6px;
+    padding-left: 6px;
+	background-color: orange;
+	border-radius: 6px;
+	box-shadow: 1px 1px 1px darkgray;
+}
+
+.calculadora .teclado,
+.calculadora .cabecera {
+	min-width: 250px;
+	background-color: lightgray;
+	margin-bottom:4px;
+	margin-top:4px;
+	padding: 6px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	border-radius: 6px;
+	box-shadow: 1px 1px 1px darkgray;
+}
+
+.calculadora .row {
+	/*border: dotted 1px white;*/
+	display: flex;
+	margin-bottom: 0;
+}
+
+.calculadora .panel-content {
+	display: flex;
+}
+
+.calculadora .col-xs-1 {
+	padding-right: 0
+}
+
+.calculadora .btn {
+	width: 100%;
+	margin-bottom: 4px;
+	margin-right: 4px;
+}
+
+.calculadora #b_raiz span {
+	text-decoration: overline;
+}
+
+.calculadora #resultado, 
+.calculadora #memoria {
+	margin-bottom: 5px;
+	padding-left: 0px;
+	padding-right: 5px;
+}
+
+.calculadora #botones_memoria,
+.calculadora #botones_lcd {
+	margin-top: 5px;
+}
+
+.calculadora #lcd,
+.calculadora #mem_valor {
+	text-align: right;
+}
+
+.calculadora .btn_memoria,
+.calculadora .btn_lcd {
+	width: initial;
+	margin: initial;
+}
+
+.calculadora #botones_lcd_xs {
+	padding-right: 0px;
+}
+
+.calculadora #lcd_botones_izq,
+.calculadora #lcd_botones_der {
+	padding: 0;
+	padding-right: 6px;
+	margin-top: -5px;
+	margin-bottom: 5px;
+	margin-right: 15px;
+}
+
+.calculadora #lcd_botones_izq {
+	padding-right: 0;
+	margin-right: 0px;
+}
+
+/*.btn-primary {
+	color: Maroon;
+}
+.btn-info {
+	color: darkBlue;
+}*/
+
+
+
+.memoria-active {
+	background-color: red;
+	color:white;
+	opacity: .7;
+}
+
+.lcd-active{
+	background-color: green;
+	color:white;
+	opacity: .7;
+}
+

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carrusel - Calculadora</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Estilos -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="css/supernice.css">
+
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/styles_calculadora.css">
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="js/jquery-ui.min.js"> </script>
+  <script src="js/jquery.ui.touch-punch.min.js"> </script>
+  <script src="js/bootstrap.js"></script>
+  <!-- Bootbox.js is a small JavaScript library which allows you to create programmatic dialog boxes using Bootstrap modals, without having to worry about creating, managing or removing any of the required DOM elements or JS event handlers. 
+  Download at: http://bootboxjs.com/
+   -->
+  <script src="js/bootbox.min.js"></script>
+
+  <script src="js/jquery.caret.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/scripts_calculadora.js"></script>
+
+<!-- Fuentes -->
+  <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+
+
+</head>
+<body>
+
+<!-- header -->
+<header class="container">
+  <nav class="navbar navbar-inverse ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">Calculadora</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container calculadora"> 
+
+  <div class="container-fluid cabecera" id="cabecera">
+    <!-- grupo LCD + Botón atrás -->
+    <div class="col-xs-12 col-sm-6" id="resultado">
+      <div class="input-group  has-success">
+        <div class="input-group-addon">
+          <span id="acc_valor"></span>
+          <span id="acc_operador"></span>
+        </div>
+        <!-- <input type="text" class="form-control" value="" id="lcd"> -->
+        <div class="form-control" id="lcd" contenteditable="true"></div>
+      </div> 
+      <div id="botones_lcd" class="pull-left hidden-xs">
+        <div>
+          <button type="button" class="btn btn-success btn-sm op_unitario btn_lcd" id="b_atras" title="Borra un caracter">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div> 
+    <!-- Resultado -->
+
+    <!-- Botones memoria y Botón Atrás para xs -->
+    <div class="col-xs-12 visible-xs" id="botones_lcd_xs">
+      <div id="botones_lcd" class="row xs-visible">
+        <div class="col-xs-2" id="lcd_botones_izq">
+          <button type="button" class="btn btn-success btn-sm op_unitario btn_lcd" id="b_atras" title="Borra un caracter">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="col-xs-10 text-right" id="lcd_botones_der">
+          <button type="button" class="btn btn-danger btn-sm btn_memoria" id="b_mc" title="Borra la memoria">MC</button>
+          <button type="button" class="btn btn-danger btn-sm btn_memoria" id="b_mr" title="Recupera la memoria">MR</button>
+          <button type="button" class="btn btn-danger btn-sm btn_memoria" id="b_ms" title="Guarda el número actual en la memoria">MS</button>
+          <button type="button" class="btn btn-danger btn-sm btn_memoria" id="b_mmas" title="Suma el número a la memoria">M+</button>
+          <button type="button" class="btn btn-danger btn-sm btn_memoria" id="b_mmenos" title="Resta el número de la memoria">M-</button>
+        </div>
+      </div>
+    </div> <!--Botones memoria y atrás xs -->
+
+    <!-- Grupo memoria + Botones memoria -->
+    <div class="col-xs-12 col-sm-6"id="memoria">
+      <div class="input-group has-error">
+        <span class="input-group-addon" id="mem_titulo">Memoria: </span>
+        <!-- <input type="text" class="form-control" value="" readonly id="mem_valor"> -->
+        <div class="form-control" value="" id="mem_valor"></div>
+      </div>
+      <div id="botones_memoria" class="pull-right hidden-xs">
+        <div>
+          <button type="button" class="btn btn-danger btn-sm btn_memoria" id="b_mc" title="Borra la memoria">MC</button>
+          <button type="button" class="btn btn-danger btn-sm btn_memoria" id="b_mr" title="Recupera la memoria">MR</button>
+          <button type="button" class="btn btn-danger btn-sm btn_memoria" id="b_ms" title="Guarda el número actual en la memoria">MS</button>
+          <button type="button" class="btn btn-danger btn-sm btn_memoria" id="b_mmas" title="Suma el número a la memoria">M+</button>
+          <button type="button" class="btn btn-danger btn-sm btn_memoria" id="b_mmenos" title="Resta el número de la memoria">M-</button>
+        </div>
+      </div>
+    </div> <!-- Grupo y botones memoria -->
+  </div> <!-- Cabecera -->
+
+  <div class="container-fluid teclado ">
+
+      <!-- teclado numérico principal -->
+      <div class="col-xs-12 col-sm-8 teclado-ordenador">
+        <div class="row" id="tp-r1">
+          <!-- <button class="btn btn-info bnt-md" data-toggle="modal" data-target="#myModal"> -->
+          <button class="btn btn-info bnt-md btn_info" id="b_info">
+          <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          </button>
+          <button class="btn btn-primary bnt-md op_binario" id="b_divide" title="División">/</button>
+          <button class="btn btn-primary bnt-md op_binario" id="b_multiplica" title="Multiplicación">*</button>
+          <button class="btn btn-primary bnt-md op_binario" id="b_resta" title="Resta">-</button>
+        </div>
+
+        <div class="row" id="tp-r2">
+          <button class="btn btn-default bnt-md btn_numero" id="num7">7</button>
+          <button class="btn btn-default bnt-md btn_numero" id="num8">8</button>
+          <button class="btn btn-default bnt-md btn_numero" id="num9">9</button>
+          <button class="btn btn-primary bnt-md op_binario" id="b_suma" title="Suma">+</button>
+        </div>
+        <div class="row" id="tp-r3">
+          <button class="btn btn-default bnt-md btn_numero" id="num4">4</button>
+          <button class="btn btn-default bnt-md btn_numero" id="num5">5</button>
+          <button class="btn btn-default bnt-md btn_numero" id="num6">6</button>
+          <button class="btn btn-primary bnt-md op_binario" id="b_eleva" title="Potencia">x<sup>y</sup></button>
+        </div>
+        <div class="row" id="tp-r4-r5">
+          <button class="btn btn-default bnt-md btn_numero" id="num1">1</button>
+          <button class="btn btn-default bnt-md btn_numero" id="num2">2</button>
+          <button class="btn btn-default bnt-md btn_numero" id="num3">3</button>
+          <button class="btn btn-default btn-info bnt-md btn_numero" id="coma" title="Separador de números">,</button>
+        </div>
+        <div class="row">
+          <button class="btn btn-default bnt-md op_unitario" id="b_signo" title="Cambiar el signo">&plusmn;</button>
+          <button class="btn btn-default bnt-md btn_numero" id="num0">0</button>
+          <button class="btn btn-default bnt-md btn_numero" id="punto" title="Separador decimal">.</button>
+          <button class="btn btn-success bnt-md op_calcular" id="b_calcula" title="Resultado">&equals;</button>
+        </div>
+      </div> <!--teclado numérico principal -->
+      <div class="clearfix visible-xs-block"></div>
+
+      <!-- teclado adicional sm y mayor-->
+      <div class="col-sm-4 hidden-xs" >
+        <div class="row">
+          <button class="btn btn-warning bnt-md op_unitario" id="b_cuadrado" title="Número elevado al cuadrado"> x<sup>2</sup> </button>
+          <button class="btn btn-warning bnt-md op_unitario" id="b_potencia2" title="Potencia n del número 2"> 2<sup>n</sup> </button>
+        </div>
+        <div class="row">
+          <button class="btn btn-warning bnt-md op_unitario" id="b_invertido" title="Inverso del número"> <sup>1</sup>&#x2044;<sub>x</sub> </button>
+          <button class="btn btn-warning bnt-md op_unitario" id="b_factorial" title="Factorial del número n: n*(n-1)*(n-2)*...*3*2*1"> n! </button>
+        </div>
+        <div class="row">
+          <button class="btn btn-warning bnt-md op_unitario" id="b_raiz" title="Raíz cuadrada del número"> &radic;<span>x&nbsp;</span> </button>
+          <button class="btn btn-warning bnt-md op_unitario" id="b_entero" title="Parte entera del número"> [x] </button>
+        </div>
+        <div class="row">
+          <button class="btn btn-info bnt-md op_varios" id="b_sumatorio" title="Sumatorio de varios números separados por comas"> &sum;</button>
+          <button class="btn btn-info bnt-md op_varios" id="b_producto" title="Producto de varios números separados por comas"> &prod;</button>
+        </div>
+        <div class="row">
+          <button class="btn btn-danger bnt-md op_borrar" id="b_borrar" title="Resetea la calculadora (el valor actual, la memoria y el acumulador)">C</button>
+          <button class="btn btn-danger bnt-md op_borrar" id="b_borrar_parcial" title="Resetea únicamente el valor actual">CE</button>
+        </div>
+      </div>  <!-- Teclado adicional sm y mayor-->
+    
+
+      <!--teclado adicional xs -->
+      <div class="col-xs-12 visible-xs" >
+        <div class="row">
+          <button class="btn btn-warning bnt-md op_unitario" id="b_cuadrado" title="Número elevado al cuadrado"> x<sup>2</sup> </button>
+          <button class="btn btn-warning bnt-md op_unitario" id="b_potencia2" title="Potencia n del número 2"> 2<sup>n</sup> </button>
+          <button class="btn btn-warning bnt-md op_unitario" id="b_invertido" title="Inverso del número"> <sup>1</sup>&#x2044;<sub>x</sub> </button>
+          <button class="btn btn-warning bnt-md op_unitario" id="b_factorial" title="Factorial del número n: n*(n-1)*(n-2)*...*3*2*1"> n! </button>
+        </div>
+        <div class="row">
+          <button class="btn btn-warning bnt-md op_unitario" id="b_raiz" title="Raíz cuadrada del número"> &radic;<span>x&nbsp;</span> </button>
+          <button class="btn btn-warning bnt-md op_unitario" id="b_entero" title="Parte entera del número"> [x] </button>
+          <button class="btn btn-info bnt-md op_varios" id="b_sumatorio" title="Sumatorio de varios números separados por comas"> &sum;</button>
+          <button class="btn btn-info bnt-md op_varios" id="b_producto" title="Producto de varios números separados por comas"> &prod;</button>
+        </div>
+        <div class="row">
+          <button class="btn btn-danger bnt-md op_borrar" id="b_borrar" title="Resetea la calculadora (elimina el valor actual, la memoria y el acumulador)">C</button>
+          <button class="btn btn-danger bnt-md op_borrar" id="b_borrar_parcial" title="Resetea únicamente el valor actual">CE</button>
+        </div>
+      </div>  
+      <!-- Teclado adicional -->
+  
+
+  </div> <!--calculadora -->
+</div>
+
+
+<!-- Diálogo Modal de información-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Calculadora</h4>
+      </div>
+      <div class="modal-body">
+        Calculadora realizada con bootstrap y jQuery.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- footer -->
+  <div class="container footer">
+    <div class="pull-left texto-footer">
+      <p> Begoña Huidobro, 2016</p>
+    </div>
+  </div> <!--footer -->
+
+
+
+
+
+
+
+</body>
+</html>
