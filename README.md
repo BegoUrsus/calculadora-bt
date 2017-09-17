@@ -1,12 +1,13 @@
-#Calculadora (Calculator)
+
+# Calculadora (Calculator)
 
 Calculadora realizada utilizando HTML5, CSS3, jQuery y Bootstrap
 
-##Capturas de pantalla
+## Capturas de pantalla
 
 ![](https://raw.githubusercontent.com/BegoUrsus/calculadora-bt/gh-pages/Calculadora.jpg) ![](httpshttps://raw.githubusercontent.com/BegoUrsus/calculadora-bt/gh-pages/Calculadora.jpg)
 
-##Código y demo
+## Código y demo
 
 [Demo](http://begoursus.github.io/calculadora-bt/site/)
 
